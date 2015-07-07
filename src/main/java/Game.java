@@ -11,7 +11,7 @@ public class Game {
     public static void main(String[] args) {
         Person p = new Person(3, 3);
         Maze maze = new Maze(
-                "┏━━━━━━━━┓",
+                "┏━━━━━━━━━┓",
                 "┃......☕..┃",
                 "┃.┃.┃.┃.┃.┃",
                 "┃.┃.┃.┣━┫.┃",
