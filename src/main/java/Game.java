@@ -23,7 +23,18 @@ public class Game {
         while (maze.at(p.x, p.y) != 'X') {
             System.out.println();
 
+            // This prints the map.
+            for (int j = -2; j <= 2; j++) {
+                for (int i = -2; i <= 2; i++) {
+                    if (i == 0 && j == 0)
+                        System.out.print("☺");
+                    else
+                        System.out.print(maze.at(p.x + i, p.y - j));
+                }
+                System.out.println();
+            }
 
+            // This prints where you can go.
             List<String> dir = new ArrayList<>();
             if (maze.at(p.x - 1, p.y) != '#') dir.add("(w)est");
             if (maze.at(p.x + 1, p.y) != '#') dir.add("(e)ast");
@@ -31,6 +42,7 @@ public class Game {
             if (maze.at(p.x, p.y - 1) != '#') dir.add("(s)outh");
 
             System.out.println("you can go " + dir + " x: " + p.x + " y: " + p.y);
+
             System.out.println("Where would you like to go?");
             String ans = in.nextLine().toLowerCase();
             switch (ans) {
@@ -92,6 +104,8 @@ class Maze {
     }
 
     public char at(int x, int y) {
+        if (y < 0 || y >= layout.length || x < 0 || x >= layout[layout.length - 1 - y].length())
+            return '#';
         return layout[layout.length - 1 - y].charAt(x);
     }
 }
